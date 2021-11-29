@@ -35,22 +35,6 @@ function cleanUpData(data){
     return newData
 }
 
-function convertObjectFormat(data,dataTitle){
-
-    console.log()
-    let dataObjet = []
-
-    for (let j = 0; j < data.length; j++) {
-        
-        for (let i = 0; i < dataTitle.length; i++) {
-
-
-        }
-    }
-
-
-}
-
 function parseToObject(data){
     let titles = []
     let first_array = data.split("\n")
@@ -68,18 +52,19 @@ function parseToObject(data){
             line.forEach(function (data, indexData) {
                 lineObject[titles[indexData]]= data
             })
-            let lineName = "Tirage_" + index
-            parsedData[lineName]=lineObject
+            parsedData.push(lineObject)
         }
     });
-    console.log(parsedData)
+    return parsedData
 }
 
-fs.readFile(file,'utf-8',(err ,data ) =>{
-    if(err){
+
+fs.readFile(file,'utf-8',async (err, data) => {
+    if (err) {
         console.log(err)
-    }else {
-        parseToObject(data)
+    } else {
+        let tab = parseToObject(data)
+        console.log(tab.length)
     }
 })
 
