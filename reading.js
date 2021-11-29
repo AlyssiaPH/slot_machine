@@ -1,5 +1,5 @@
 let fs = require('fs')
-const file = './csv_files/euromillions.csv';
+const file = './csv_files/factbook.csv';
 
 // program to get the file extension
 
@@ -67,7 +67,7 @@ function parseToObject(data){
             line.forEach(function (data, indexData) {
                 lineObject[titles[indexData]]= data
             })
-            let lineName = "Tirage_" + (index-1)
+            let lineName = "Data_" + (index-1)
             parsedData[lineName]=lineObject
         }
     });
