@@ -58,12 +58,22 @@ function parseToObject(data){
     return parsedData
 }
 
+function statJackpot(arrayData) {
+    let moyenne=0;
+    let jackpot="JACKPOT";
+    for (let i = 0; i < arrayData.length; i++) {
+        moyenne=moyenne+parseInt(arrayData[i][jackpot]);
+
+    }
+    console.log(moyenne/arrayData.length);
+}
 
 fs.readFile(file,'utf-8',async (err, data) => {
     if (err) {
         console.log(err)
     } else {
         let tab = parseToObject(data)
+        statJackpot(tab)
         console.log(tab.length)
     }
 })
