@@ -5,7 +5,7 @@ const file = './csv_files/euromillions.csv';
 
 function getNameFile(filename){
     // get file extension
-    console.log(filename.split('/'))
+    //console.log(filename.split('/'))
     return filename.split('/')[2]
 }
 
@@ -37,6 +37,7 @@ function cleanUpData(data){
 
 function convertObjectFormat(data,dataTitle){
 
+    console.log()
     let dataObjet = []
 
     for (let j = 0; j < data.length; j++) {
@@ -50,12 +51,35 @@ function convertObjectFormat(data,dataTitle){
 
 }
 
+function parseToObject(data){
+    let titles = []
+    let first_array = data.split("\n")
+    let parsedData = []
+    first_array.forEach(function (line, index) {
+        if(index === 0) {
+            titles = line.split(";")
+            titles.pop()
+            console.log("Titles : ",titles)
+        }
+        else{
+            line = line.split(";")
+            line.pop()
+            let lineObject = {}
+            line.forEach(function (data, indexData) {
+                lineObject[titles[indexData]]= data
+            })
+            let lineName = "Tirage_" + index
+            parsedData[lineName]=lineObject
+        }
+    });
+    console.log(parsedData)
+}
+
 fs.readFile(file,'utf-8',(err ,data ) =>{
     if(err){
         console.log(err)
     }else {
-        console.log(data)
-        let convertTab = data.split(';')
+        parseToObject(data)
     }
 })
 
