@@ -59,7 +59,6 @@ function parseToObject(data){
         if(index === 0) {
             titles = line.split(";")
             titles.pop()
-            console.log("Titles : ",titles)
         }
         else{
             line = line.split(";")
@@ -68,7 +67,7 @@ function parseToObject(data){
             line.forEach(function (data, indexData) {
                 lineObject[titles[indexData]]= data
             })
-            let lineName = "Tirage_" + index
+            let lineName = "Tirage_" + (index-1)
             parsedData[lineName]=lineObject
         }
     });
