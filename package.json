@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/AlyssiaPH/slot_machine/issues"
   },
-  "homepage": "https://github.com/AlyssiaPH/slot_machine#readme"
+  "homepage": "https://github.com/AlyssiaPH/slot_machine#readme",
+  "dependencies": {
+    "axios": "^0.24.0"
+  }
 }

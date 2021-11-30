@@ -58,13 +58,12 @@ function parseToObject(data){
     return parsedData
 }
 
-
 fs.readFile(file,'utf-8',async (err, data) => {
     if (err) {
         console.log(err)
     } else {
         let tab = parseToObject(data)
-        console.log(tab.length)
+        console.log(tab[0])
     }
 })
 
