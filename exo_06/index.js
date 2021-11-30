@@ -1,13 +1,11 @@
-'use strict'
-const filterFn = require('./module.js')
-const dir = process.argv[2]
-const filterStr = process.argv[3]
+const filterFn = require('./filter.js')
+const dirPath = process.argv[2]
+const extentionFilter = process.argv[3]
 
-filterFn(dir, filterStr, function (err, list) {
+filterFn(dirPath, extentionFilter, function (err, list) {
     if (err) {
-        return console.error('There was an error:', err)
+        return console.error('Error:', err)
     }
-
     list.forEach(function (file) {
         console.log(file)
     })
