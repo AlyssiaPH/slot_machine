@@ -1,53 +1,36 @@
-const axios = require('axios');
-const fs = require("fs");
+const config = require('./config')
+const http = require('http');
+const express = require('express')
+const {request, response} = require("express");
+const app = express()
+const port = 8080
 
-axios({
-    method: 'get',
-    url: 'http://bit.ly/2mTM3nY',
-    responseType: 'stream'
-})
-    .then(function (response) {
-        response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
-    });
 
 
 
 //
-// // Make a request for a user with a given ID
-// axios.get('/user?ID=12345')
-//     .then(function (response) {
-//         // handle success
-//         console.log(response);
-//     })
-//     .catch(function (error) {
-//         // handle error
-//         console.log(error);
-//     })
-//     .then(function () {
-//         // always executed
-//     });
-//
-// // Optionally the request above could also be done as
-// axios.get('/user', {
-//     params: {
-//         ID: 12345
-//     }
+// app.get('/', (req, res) => {
+//     res.send('Hello World!')
 // })
-//     .then(function (response) {
-//         console.log(response);
-//     })
-//     .catch(function (error) {
-//         console.log(error);
-//     })
-//     .then(function () {
-//         // always executed
-//     });
 //
-// async function getUser() {
-//     try {
-//         const response = await axios.get('/user?ID=12345');
-//         console.log(response);
-//     } catch (error) {
-//         console.error(error);
+// app.get('/me',(req,res) =>{
+//     res.send('Welcom me')
+// })
+//
+// app.listen(port, () => {
+//     console.log(`Example app listening at http://localhost:${port}`)
+// })
+
+// http.createServer(function (req, res) {
+//     res.writeHead(200, {'Content-Type': 'text/html'});
+//     let page = ''
+//     if (req.url === '/'){
+//         page = "Welcome in Serve"
+//     }else  if(req.url === '/you'){
+//         page = 'welcome in you'
+//     }else {
+//         page = 'error 404'
 //     }
-// }
+//     res.write(page);
+//     res.end();
+// }).listen(8080);
