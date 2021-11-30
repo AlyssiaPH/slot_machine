@@ -1,19 +1,14 @@
-const config = require('./config')
-const http = require('http');
 const express = require('express')
 const {request, response} = require("express");
 const app = express()
 const port = 8080
 
-
-
-
-//
 // app.get('/', (req, res) => {
 //     res.send('Hello World!')
 // })
 //
 // app.get('/me',(req,res) =>{
+
 //     res.send('Welcom me')
 // })
 //
