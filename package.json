@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:csv": "node ./reading.js",
-    "dev:casino": "node ./casino.js",
+    "dev:csv": "node exoJ1/reading.js",
+    "dev:casino": "node exoJ1/casino.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
