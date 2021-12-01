@@ -11,9 +11,27 @@ const serveur = http.createServer(app)
 
 
 
-app.get('/delete',(req , res )=>{
+exports.delete1 = (req, res) => {
     const id = req.params.id;
-})
+  
+    deleteUSser.findByIdAndRemove(id)
+      .then(data => {
+        if (!data) {
+          res.status(404).send({
+            message: `Cannot delete Tutorial with id=${id}. Maybe Tutorial was not found!`
+          });
+        } else {
+          res.send({
+            message: "Tutorial was deleted successfully!"
+          });
+        }
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Could not delete Tutorial with id=" + id
+        });
+      });
+  };
 
 
 function createDB(){
