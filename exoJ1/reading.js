@@ -1,5 +1,6 @@
-let fs = require('fs')
-const file = './csv_files/euromillions.csv';
+let fs = require('fs');
+const { title } = require('process');
+const file = '../csv_files/euromillions.csv';
 
 // program to get the file extension
 
@@ -55,6 +56,7 @@ function parseToObject(data){
             parsedData.push(lineObject)
         }
     });
+    titleBrowse(titles,parsedData);
     return parsedData
 }
 
@@ -73,10 +75,51 @@ fs.readFile(file,'utf-8',async (err, data) => {
         console.log(err)
     } else {
         let tab = parseToObject(data)
-        statJackpot(tab)
-        console.log(tab.length)
+       
     }
 })
 
+function titleBrowse(titleData, readData ) {
+    for (let i in titleData ) {
+       let title= titleData[i]  
+       
+       statFile(title,readData);
+
+    }
+    
+
+    fs.writeFile('../csv_files/stat.csv', contentFile, err => {
+        if (err) {
+            console.error(err)
+            return
+        }
+        //file written successfully
+    })
+
+   
+}
+
+function statFile(title, arrayData) {
+    let moyenne=0;
+    
+
+    for (let i = 0; i < arrayData.length; i++) {
+        moyenne=moyenne+parseInt(arrayData[i][title]);
+
+    }
+    contentFile+= title+" :"+moyenne/arrayData.length+"\n"
+    console.log(title+" :"+moyenne/arrayData.length);
+   
+}
 
 
+
+fs.readFile('../csv_files/stat.csv', 'utf8' , (err, data) => {
+        if (err) {
+          console.error(err)
+          return
+        }
+        console.log(data)
+})
+
+let contentFile=""
