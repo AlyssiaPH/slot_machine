@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://groupe6:ekwHcv6ZmRVRNBrSX5w@94.130.108.19/groupe6');
-let modelUsers = mongoose.model('user', {name: String, email: String, pass: String})
+let modelUsers = mongoose.model('user', {name: String, email: String, pass: String,admin:Boolean})
 const GETISNULL = 'emailNull'
 const GETEXIST = 'emailExist'
+
 
 async function getFindOneElementByArguments(argumentMethode,arguments){
     let data = await modelUsers.findOne({email: arguments})
@@ -15,6 +16,11 @@ async function getFindOneElementByArguments(argumentMethode,arguments){
         default:
             break
     }
+}
+
+async function login(user){
+    let data = await modelUsers.find({email: user.email});
+    return data
 }
 
 const validateEmail = (email) => {
@@ -43,17 +49,25 @@ async function createUserInstance(user){
 }
 
 
-async function getByEmail(user){
+async function deleteUser(user){
+    modelUsers.deleteMany({ breed: "Labrador" }, function(err, result) {
+        if (err) {
+            return -1
+        } else {
+            return 1
+        }
+    });
+}
+
+async function getByEmailToConnect(user){
     if(validateEmail(user.email)){
         if(await getFindOneElementByArguments(GETEXIST,user.email)){
-            modelUsers.find({email: user.email}).then(result =>{
-                console.log(result)
-            })
-            // if(tab[0].email === user.email && tab[0].pass === user.pass){
-            //     return tab[0]
-            // }else {
-            //     return -3
-            // }
+            let tabUser = await login(user)
+            if(tabUser[0].email === user.email && tabUser[0].pass === user.pass){
+                return tabUser[0]
+            }else{
+                return -3
+            }
         }else{
             return -2
         }
@@ -62,22 +76,25 @@ async function getByEmail(user){
     }
 }
 
-
-
-
-
-
 let user = {
-    name: 'teddy2',
-    email: 'teddy@gmail.com',
-    pass: 'test'
+    name: 'quentin',
+    email: 'quentin@gmail.com',
+    pass: 'test2',
+    admin: true
 }
 
-// createUserInstance(user).then(result =>{
-//     console.log(result)
-// })
 
-getByEmail(user).then(result =>{
+/**
+ *
+deleteUser(user)
+
+createUserInstance(user).then(result =>{
+    console.log(result)
+})
+ **/
+
+
+getByEmailToConnect(user).then(result =>{
     console.log(result)
 })
 
