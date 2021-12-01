@@ -1,9 +1,0 @@
-{
-    "path": "/api/users",
-    "pathyou": "/you",
-    "port": 8080,
-    "hello": "bonjour",
-    "error": "error 404",
-    "you" : "You on /you",
-    "delete" : "/api/users/delete"
-}
