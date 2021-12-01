@@ -1,11 +1,7 @@
 const express = require('express')
-const {request, response} = require("express");
-const app = express()
+const server = express()
 const port = 8080
-const axios = require('axios')
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
+server.get('/',(req,res)=>{
+    res.send('hello teddy')
 }).listen(port)
-
-// axios({method: 'get', url: 'http://bit.ly/2mTM3nY', responseType: 'stream'}).then(function (response) {response.data.pipe('toto')});
