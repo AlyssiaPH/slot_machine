@@ -1,6 +1,6 @@
 export default class Users {
-    constructor(id,email,pass) {
-        this._id = id
+    constructor(name,email,pass) {
+        this._name = name
         this._email = email
         this._pass = pass
     }
