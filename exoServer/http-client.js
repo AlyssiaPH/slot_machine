@@ -1,31 +1,7 @@
-const express = require('express')
-const {request, response} = require("express");
-const app = express()
-const port = 8080
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://groupe6:ekwHcv6ZmRVRNBrSX5w@94.130.108.19/groupe6');
 
-// app.get('/', (req, res) => {
-//     res.send('Hello World!')
-// })
-//
-// app.get('/me',(req,res) =>{
+const Cat = mongoose.model('Cat', { name: String });
 
-//     res.send('Welcom me')
-// })
-//
-// app.listen(port, () => {
-//     console.log(`Example app listening at http://localhost:${port}`)
-// })
-
-// http.createServer(function (req, res) {
-//     res.writeHead(200, {'Content-Type': 'text/html'});
-//     let page = ''
-//     if (req.url === '/'){
-//         page = "Welcome in Serve"
-//     }else  if(req.url === '/you'){
-//         page = 'welcome in you'
-//     }else {
-//         page = 'error 404'
-//     }
-//     res.write(page);
-//     res.end();
-// }).listen(8080);
+const kitty = new Cat({ name: 'Zildjian' });
+kitty.save().then(() => console.log('meow'));
