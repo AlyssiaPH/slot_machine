@@ -50,25 +50,3 @@ function createNewUse(user){
     })
 }
 
-
-const Cat = mongoose.model('Cat', { name: String });
-const kitty = new Cat({ name: 'Zildjian' });
-kitty.save().then(() => console.log('meow'));
-
-
-
-function deleteNewUse(user){
-    user = new User()
-    mongoose.deleteModel('user',{
-        id : user._id,
-        email: user._email,
-        pass: user._pass
-    })
-    mongoose.deleteModel(/.+/);
-}
-
-
-
-mongoose.model('user', new Schema({ name: String }));
-console.log(mongoose.model('User'));
-

@@ -1,8 +1,18 @@
-const express = require('http')
-const {delete1} = require('delete1')
+/**
+ * POST : send data
+ * GET : look data
+ * PUT : UPDATE
+ * DELETE : delete
+ * @type {[{methode: string, route: string},{methode: string, route: string}]}
+ */
 
-const router = express.Router()
-
-export default router
-
-router.get('/api/users/delete',delete1)
+const routes = [
+    {
+        'route' : '/create',
+        'methode':'POST'
+    },
+    {
+        'route': '/delete',
+        'methode':'DELETE'
+    }
+]

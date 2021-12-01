@@ -7,7 +7,7 @@
     "dev:test": "node exo2/exo2.js 4 5 14 33 toto",
     "dev:csv": "node exoJ1/reading.js",
     "dev:casino": "node exoJ1/casino.js",
-    "dev:server": "node ./exoServer/managerConnection.js",
+    "dev:server": "node ./exoServer/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

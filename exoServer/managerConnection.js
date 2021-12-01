@@ -76,25 +76,34 @@ async function getByEmailToConnect(user){
     }
 }
 
-let user = {
+module.exports = {
+    createUserInstance,
+    deleteUser,
+    getByEmailToConnect
+}
+
+
+
+/**
+
+ let user = {
     name: 'quentin',
     email: 'quentin@gmail.com',
     pass: 'test2',
     admin: true
 }
 
-
-/**
- *
 deleteUser(user)
 
 createUserInstance(user).then(result =>{
     console.log(result)
 })
- **/
+
 
 
 getByEmailToConnect(user).then(result =>{
     console.log(result)
 })
+ **/
+
 
